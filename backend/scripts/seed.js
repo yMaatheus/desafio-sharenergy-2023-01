@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 require('dotenv/config');
 
 const { MONGO_URI, MONGO_DB, MONGO_USER, MONGO_PASS } = process.env;
@@ -26,7 +27,7 @@ const User = mongoose.model('User', userSchema);
 connectToDatabase()
   .then(async () => {
     console.log('Connected to database');
-    const seedUsers = [{ userName: 'desafiosharenergy', password: 'sh@r3n3rgy' }];
+    const seedUsers = [{ userName: 'desafiosharenergy', password: bcrypt.hashSync('sh@r3n3rgy', bcrypt.genSaltSync(10)) }];
 
     console.log('Seeding in database...');
 
