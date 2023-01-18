@@ -1,7 +1,11 @@
 import Joi from 'joi';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { login } from '../../services/user';
+import { setToken } from '../../utils/localStorage.util';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -10,7 +14,6 @@ const Login = () => {
 
   const submitLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
     const schema = Joi.object({
       userName: Joi.string().min(3).required(),
       password: Joi.string().min(6).required()
@@ -22,10 +25,15 @@ const Login = () => {
       console.log(error);
       return;
     }
+
+    const { data: { token } } = await login({ userName, password });
+
+    setToken(token);
+    setTimeout(()=>{ navigate('/') }, 1000);
   }
   
   return (
-    <form action="">
+    <form action=''>
       <fieldset>
         <label htmlFor="userName">User Name</label>
         <input
