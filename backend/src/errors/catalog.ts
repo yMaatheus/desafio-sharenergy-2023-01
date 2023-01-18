@@ -11,6 +11,7 @@ export enum ErrorTypes {
   ObjectNotFound = 'ObjectNotFound',
   InvalidMongoId = 'InvalidMongoId',
   InvalidCredentials = 'InvalidCredentials',
+  TokenNotFound = 'TokenNotFound',
 }
 
 export const errorCatalog: ErrorCatalog = {
@@ -24,6 +25,10 @@ export const errorCatalog: ErrorCatalog = {
   },
   InvalidCredentials: {
     error: 'Invalid credentials',
+    httpStatus: 401,
+  },
+  TokenNotFound: {
+    error: 'Token not found',
     httpStatus: 401,
   }
 };
