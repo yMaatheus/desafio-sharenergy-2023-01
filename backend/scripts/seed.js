@@ -27,7 +27,11 @@ const User = mongoose.model('User', userSchema);
 connectToDatabase()
   .then(async () => {
     console.log('Connected to database');
-    const seedUsers = [{ userName: 'desafiosharenergy', password: bcrypt.hashSync('sh@r3n3rgy', bcrypt.genSaltSync(10)) }];
+    const seedUsers = [
+      { userName: 'desafiosharenergy', password: bcrypt.hashSync('sh@r3n3rgy', bcrypt.genSaltSync(10)) },
+      { userName: 'admin', password: bcrypt.hashSync('admin123', bcrypt.genSaltSync(10)) },
+      { userName: 'matheus', password: bcrypt.hashSync('matheus', bcrypt.genSaltSync(10)) }
+    ];
 
     console.log('Seeding in database...');
 
