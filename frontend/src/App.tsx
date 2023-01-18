@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import ProtectedLayout from "./components/ProtectedLayout"
 import CatPage from "./pages/CatPage"
 import ClientPage from "./pages/ClientPage"
@@ -16,6 +16,8 @@ function App() {
         <Route path="/clients" element={<ClientPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/404" element={<><h1>Choose the correct path</h1></>} />
+      <Route path="*" element={<Navigate replace to="/404" />} />
     </Routes>
   )
 }
