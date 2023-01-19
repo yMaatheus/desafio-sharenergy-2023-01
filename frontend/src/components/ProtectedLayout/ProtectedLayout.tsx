@@ -1,6 +1,7 @@
-import { checkLogin } from './../../services/user';
+import { checkLogin } from '../../services/user';
 import { useEffect } from "react";
 import { useNavigate, useOutlet } from "react-router-dom";
+import NavBar from '../NavBar';
 
 export const ProtectedLayout = () => {
   const outlet = useOutlet();
@@ -14,5 +15,10 @@ export const ProtectedLayout = () => {
     autoCheckLogin()
   }, [navigate])
 
-  return (outlet);
+  return (
+    <>
+      <NavBar />
+      {outlet}
+    </>
+  );
 };
