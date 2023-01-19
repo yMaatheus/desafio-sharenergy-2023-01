@@ -1,10 +1,11 @@
-import React from 'react';
+import RandomDog from "../../components/RandomDog";
 
 const DogPage = () => {
   return (
-    <div>
+    <>
       <h1>DogPage</h1>
-    </div>
+      <RandomDog />
+    </>
   );
 }
 
