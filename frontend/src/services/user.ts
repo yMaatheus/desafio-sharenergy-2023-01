@@ -8,7 +8,7 @@ type LoginData = {
 
 export const login = (data: LoginData) => api.post("/login", data);
 export const me = () =>
-  api.get("/user/me", { headers: { Authorization: `${getToken()}` } });
+  api.get("/login/me", { headers: { Authorization: `${getToken()}` } });
 
 export const checkLogin = async () => {
   if (!getToken()) throw Error("Token not found");
