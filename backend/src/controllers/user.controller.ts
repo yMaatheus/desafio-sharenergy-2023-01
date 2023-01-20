@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import IToken from '../interfaces/IToken';
-import UserService from '../services/user.service';
+import { IUserService } from '../services/user.service';
 
 export default class UserController {
-  constructor(private _service: UserService) { 
+  constructor(private _service: IUserService) { 
     this.login = this.login.bind(this)
   }
 

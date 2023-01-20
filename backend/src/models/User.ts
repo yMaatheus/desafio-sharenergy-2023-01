@@ -5,7 +5,12 @@ export interface IUser {
   password: string;
 }
 
-export class UserODM {
+export interface IUserModel {
+  create(user: IUser): Promise<IUser>;
+  findOne(userName: string): Promise<IUser | null>;
+}
+
+export class User implements IUserModel {
   private schema: Schema;
   private model: Model<IUser>;
 
