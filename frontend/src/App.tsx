@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectedLayout from "./components/ProtectedLayout";
 import CatPage from "./pages/CatPage";
-import ClientPage from "./pages/ClientPage";
+import CustomerPage from "./pages/CustomerPage";
 import DogPage from "./pages/DogPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -12,7 +12,7 @@ const App = () => (
       <Route path="/" element={<HomePage />} />
       <Route path="/cat" element={<CatPage />} />
       <Route path="/dog" element={<DogPage />} />
-      <Route path="/clientes" element={<ClientPage />} />
+      <Route path="/customer" element={<CustomerPage />} />
     </Route>
     <Route path="/login" element={<LoginPage />} />
     <Route

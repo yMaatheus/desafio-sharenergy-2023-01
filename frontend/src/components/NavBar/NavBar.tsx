@@ -16,7 +16,7 @@ const NavBar = () => (
         Dog
       </NavLink>
       |
-      <NavLink to="clientes" className={styles.link}>
+      <NavLink to="customer" className={styles.link}>
         Clientes
       </NavLink>
     </nav>
