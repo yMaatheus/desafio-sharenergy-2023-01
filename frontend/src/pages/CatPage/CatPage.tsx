@@ -9,7 +9,7 @@ const CatPage = () => {
     if (code < 100 || code > 599) {
       return;
     }
-    setHttpCode(+event.target.value)
+    setHttpCode(+event.target.value);
   };
 
   return (
@@ -18,15 +18,16 @@ const CatPage = () => {
       <input
         type="number"
         name="code"
-        min='100'
-        max='599'
+        min="100"
+        max="599"
         value={httpCode}
-        onChange={handleHttpCode} />
+        onChange={handleHttpCode}
+      />
       <section>
         <img src={url} alt="Imagem HttpCat" />
       </section>
     </div>
   );
-}
+};
 
 export default CatPage;

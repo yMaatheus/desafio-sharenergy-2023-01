@@ -1,11 +1,11 @@
-import axios from 'axios';
-import { getToken } from '../utils/localStorage.util';
+import axios from "axios";
+import { getToken } from "../utils/localStorage.util";
 
 const { VITE_BACKEND_URL } = import.meta.env;
 const token = getToken();
 
 if (token) {
-  axios.defaults.headers.common['Authorization'] = getToken();
+  axios.defaults.headers.common["Authorization"] = getToken();
 }
 
 const api = axios.create({

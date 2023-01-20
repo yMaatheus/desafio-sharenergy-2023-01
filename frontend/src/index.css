@@ -2,7 +2,7 @@
   --main-color: #ececec;
   --secondary-color: #161c2d;
   --accent-color: #00a2a2;
-  --error-color: #ff0000;
+  --error-color: red;
   --blue: #006dfb;
   --purple: #41197f;
 }
@@ -12,10 +12,10 @@
 }
 
 * {
+  box-sizing: border-box;
+  font-family: Segoe UI , Tahoma , Geneva , Verdana , sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1, h2, h3 {

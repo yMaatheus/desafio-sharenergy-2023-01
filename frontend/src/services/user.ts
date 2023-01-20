@@ -1,4 +1,4 @@
-import { getToken } from './../utils/localStorage.util';
+import { getToken } from "./../utils/localStorage.util";
 import api from "./api";
 
 type LoginData = {
@@ -7,11 +7,12 @@ type LoginData = {
 };
 
 export const login = (data: LoginData) => api.post("/login", data);
-export const me = () => api.get("/user/me", { headers: { "Authorization": `${getToken()}` } });
+export const me = () =>
+  api.get("/user/me", { headers: { Authorization: `${getToken()}` } });
 
 export const checkLogin = async () => {
-  if (!getToken()) throw Error('Token not found');
+  if (!getToken()) throw Error("Token not found");
 
   const { data } = await me();
-  if (!data) throw Error('Data not found');
-}
+  if (!data) throw Error("Data not found");
+};
