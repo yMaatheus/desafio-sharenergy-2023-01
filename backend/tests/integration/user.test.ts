@@ -63,4 +63,26 @@ describe('Login', () => {
     });
 
   })
+
+  describe('GET /login/me', () => {
+    it('successfully', async () => {
+      sinon.stub(Model, "findOne").resolves(userValidDatabase);
+
+      chaiHttpResponse = await chai.request(app)
+        .post('/login')
+        .send(userValid);
+
+      const { token } = chaiHttpResponse.body;
+
+      chaiHttpResponse = await chai.request(app)
+        .get('/login/me')
+        .set('Authorization', token);
+
+      expect(chaiHttpResponse.status).to.equal(200);
+      expect(chaiHttpResponse.body).to.have.property('userName');
+      expect(chaiHttpResponse.body.userName).to.be.equal(userValid.userName);
+    });
+
+  })
+
 });
