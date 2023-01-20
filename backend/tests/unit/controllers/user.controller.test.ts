@@ -14,7 +14,8 @@ describe('User Controller', () => {
   const res = {} as Response;
 
   before(() => {
-    sinon.stub(service, 'login').resolves(tokenValid);
+    sinon.stub(service, 'login')
+      .onFirstCall().resolves(tokenValid)
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -33,5 +34,7 @@ describe('User Controller', () => {
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
       expect((res.json as sinon.SinonStub).calledWith(tokenValid)).to.be.true;
     });
+
   });
+
 });
