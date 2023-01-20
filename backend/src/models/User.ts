@@ -6,7 +6,6 @@ export interface IUser {
 }
 
 export interface IUserModel {
-  create(user: IUser): Promise<IUser>;
   findOne(userName: string): Promise<IUser | null>;
 }
 
@@ -22,11 +21,7 @@ export class User implements IUserModel {
     this.model = models.User || model('User', this.schema);
   }
 
-  public async create(user: IUser): Promise<IUser> {
-    return this.model.create({ ...user });
-  }
-
   public async findOne(userName: string): Promise<IUser | null> {
-    return this.model.findOne({ userName });;
+    return this.model.findOne({ userName });
   }
 }

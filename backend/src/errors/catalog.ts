@@ -30,5 +30,5 @@ export const errorCatalog: ErrorCatalog = {
   TokenNotFound: {
     error: 'Token not found',
     httpStatus: 401,
-  }
+  },
 };

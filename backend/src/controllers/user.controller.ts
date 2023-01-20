@@ -5,7 +5,7 @@ import { IUserService } from '../services/user.service';
 
 export default class UserController {
   constructor(private _service: IUserService) { 
-    this.login = this.login.bind(this)
+    this.login = this.login.bind(this);
   }
 
   public async login(req: Request, res: Response<IToken>) {
