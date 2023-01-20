@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 import { User } from '../../../src/models/User';
 import UserService from '../../../src/services/user.service';
 import UserController from '../../../src/controllers/user.controller';
+import { tokenValid, userValid } from '../../data/userMock';
 
 describe('User Controller', () => {
   const user = new User()
@@ -13,7 +14,7 @@ describe('User Controller', () => {
   const res = {} as Response;
 
   before(() => {
-    sinon.stub(service, 'login').resolves({ token: "token_valid" });
+    sinon.stub(service, 'login').resolves(tokenValid);
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
@@ -24,13 +25,13 @@ describe('User Controller', () => {
     sinon.restore()
   })
 
-  describe('login user', () => {
+  describe('Login', () => {
     it('successfully', async () => {
-      req.body = { userName: 'user_valid', password: 'password_valid' };
+      req.body = userValid;
       await controller.login(req, res);
 
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith({ token: 'token_valid' })).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(tokenValid)).to.be.true;
     });
   });
 });
