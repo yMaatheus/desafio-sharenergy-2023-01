@@ -4,7 +4,8 @@ import chai from 'chai'
 import chaiHttp = require('chai-http')
 import { Response } from 'superagent';
 import { Model } from 'mongoose';
-import { userValid, userValidDatabase } from '../data/userMock';
+import { userInvalid, userValid, userValidDatabase } from '../data/userMock';
+import { errorCatalog } from '../../src/errors/catalog';
 
 chai.use(chaiHttp);
 
@@ -24,6 +25,41 @@ describe('Login', () => {
 
       expect(chaiHttpResponse.status).to.equal(200);
       expect(chaiHttpResponse.body).to.have.property('token');
+    });
+
+    it('failure: invalid credentials', async () => {
+      sinon.stub(Model, 'findOne').resolves(userValidDatabase);
+      chaiHttpResponse = await chai.request(app)
+        .post('/login')
+        .send(userInvalid);
+
+      const { httpStatus, error } = errorCatalog.InvalidCredentials;
+
+      expect(chaiHttpResponse.status).to.equal(httpStatus);
+      expect(chaiHttpResponse.body).to.deep.equal({ error });
+    });
+
+    it('failure: all fields must be filled', async () => {
+      chaiHttpResponse = await chai.request(app)
+        .post('/login')
+        .send();
+
+      const { httpStatus, error } = errorCatalog.AllFieldsMustBeFilled;
+
+      expect(chaiHttpResponse.status).to.equal(httpStatus);
+      expect(chaiHttpResponse.body).to.deep.equal({ error });
+    });
+
+    it('failure: object not found', async () => {
+      sinon.stub(Model, 'findOne').resolves(null);
+      chaiHttpResponse = await chai.request(app)
+        .post('/login')
+        .send(userInvalid);
+
+      const { httpStatus, error } = errorCatalog.ObjectNotFound;
+
+      expect(chaiHttpResponse.status).to.equal(httpStatus);
+      expect(chaiHttpResponse.body).to.deep.equal({ error });
     });
 
   })
