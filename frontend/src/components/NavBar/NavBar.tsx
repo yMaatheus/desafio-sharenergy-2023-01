@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import styles from "./navbar.module.css";
+import LogoImg from "../../assets/logo.png";
 
 const NavBar = () => (
   <header className={styles.container}>
+    <img src={LogoImg} alt="Logo" className={styles.logo} />
     <nav>
       <NavLink to="/" className={styles.link}>
         Inicial
