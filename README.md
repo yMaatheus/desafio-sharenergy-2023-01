@@ -54,3 +54,31 @@ cd frontend/
 
 npm start
 ```
+
+## Tecnologias Utilizadas:
+
+### Backend:
+  - express
+  - bcryptjs
+  - cors
+  - express-async-errors
+  - joi
+  - jsonwebtoken
+  - mongoose
+  - eslint
+  - mocha
+  - chai
+  - sinon
+  - http-status-codes
+  - typescript
+
+### Frontend:
+  - react
+  - vite
+  - axios
+  - redux
+  - react router
+  - eslint
+  - stylelint
+  - react-icons
+  - react input mask
