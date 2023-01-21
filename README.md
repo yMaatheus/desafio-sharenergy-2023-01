@@ -6,6 +6,9 @@
 ### Como pode ver nos commits iniciei o desafio apenas no dia 16/01. Mesmo diante dos imprevistos fiz o máximo que pude no tempo limitado que tive.
 ### De qualquer forma agradeço pela oportunidade!
 
+
+[Link video de aprensentação](https://youtu.be/yAIXgf1yg7A)
+
 ## Instalação
 
 ```
