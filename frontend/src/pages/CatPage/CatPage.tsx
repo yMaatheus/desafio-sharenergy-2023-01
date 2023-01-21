@@ -1,5 +1,4 @@
 import { useState } from "react";
-import InputMask from "react-input-mask";
 
 const CatPage = () => {
   const [code, setCode] = useState<number>(200);
