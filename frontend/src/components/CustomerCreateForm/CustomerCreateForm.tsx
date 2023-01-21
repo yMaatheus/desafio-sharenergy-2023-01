@@ -7,9 +7,10 @@ import {
   setPhone,
   setUpdateMode,
 } from "../../redux/slice";
+import InputMask from "react-input-mask";
 
 const CustomerCreateForm = () => {
-  const { updateMode } = useAppSelector((state) => state.app);
+  const { updateMode, cpf, phone } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
   const title = updateMode ? "Atualizar Cliente" : "Cadastrar novo Cliente";
   const buttonLabel = updateMode ? "Atualizar" : "Cadastrar";
@@ -53,7 +54,11 @@ const CustomerCreateForm = () => {
               <input type="text" name="name" onChange={handleNameChange} />
             </td>
             <td>
-              <input type="text" name="phone" onChange={handlePhoneChange} />
+              <InputMask
+                mask="(99) 9 9999-9999"
+                value={phone}
+                onChange={handlePhoneChange}
+              />
             </td>
             <td>
               <input
@@ -63,7 +68,13 @@ const CustomerCreateForm = () => {
               />
             </td>
             <td>
-              <input type="text" name="cpf" onChange={handleCpfChange} />
+              <InputMask
+                mask="999.999.999-99"
+                type="text"
+                name="cpf"
+                value={cpf}
+                onChange={handleCpfChange}
+              />
             </td>
             <td>
               <button type="button">{buttonLabel}</button>
