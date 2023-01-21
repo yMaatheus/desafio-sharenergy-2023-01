@@ -13,6 +13,7 @@ export enum ErrorTypes {
   InvalidCredentials = 'InvalidCredentials',
   TokenNotFound = 'TokenNotFound',
   AllFieldsMustBeFilled = 'AllFieldsMustBeFilled',
+  InvalidId = 'InvalidId',
 }
 
 export const errorCatalog: ErrorCatalog = {
@@ -34,6 +35,10 @@ export const errorCatalog: ErrorCatalog = {
   },
   AllFieldsMustBeFilled: {
     error: 'All fields must be filled',
+    httpStatus: 400,
+  },
+  InvalidId: {
+    error: 'id invalid',
     httpStatus: 400,
   },
 };
