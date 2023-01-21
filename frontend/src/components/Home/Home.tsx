@@ -24,6 +24,16 @@ const Home = () => {
   const nextPage = () => page + 1 < 100 && setPage(page + 1);
   const previousPage = () => page > 1 && setPage(page - 1);
 
+  const map = (user: RandomUser) => (
+    <RandomUserCard key={user.email} {...user} />
+  );
+
+  const filter = (user: RandomUser) =>
+    user.name.first.includes(search) ||
+    user.name.last.includes(search) ||
+    user.email.includes(search) ||
+    user.login.username.includes(search);
+
   return (
     <div>
       <HomeSearch search={search} setSearch={setSearch} />
@@ -34,9 +44,7 @@ const Home = () => {
         setPage={setPage}
       />
       <section>
-        {users?.map((user) => (
-          <RandomUserCard key={user.email} {...user} />
-        ))}
+        {search ? users?.filter(filter).map(map) : users?.map(map)}
       </section>
     </div>
   );
