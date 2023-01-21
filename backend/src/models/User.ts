@@ -17,7 +17,7 @@ export class User implements IUserModel {
     this.schema = new Schema<IUser>({
       userName: { type: String, required: true, unique: true },
       password: { type: String, required: true },
-    });
+    }, { versionKey: false });
     this.model = models.User || model('User', this.schema);
   }
 

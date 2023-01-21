@@ -28,7 +28,7 @@ export class Customer {
       phone: { type: String, required: true },
       address: { type: String, required: true },
       cpf: { type: String, required: true },
-    });
+    }, { versionKey: false });
     this.model = models.Customer || model('Customer', this.schema);
   }
 
