@@ -1,15 +1,13 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { setEmail, setUpdateMode } from "../../redux/slice";
+import { updateMode } from "../../redux/slice";
 import { CustomerType } from "../../types/Customer";
 
 const CustomerList = () => {
   const customers = useAppSelector((state) => state.app.customers);
   const dispatch = useAppDispatch();
 
-  const handleUpdate = (customer: CustomerType) => {
-    dispatch(setUpdateMode(true));
-    dispatch(setEmail(customer.email));
-  };
+  const handleUpdate = (customer: CustomerType) =>
+    dispatch(updateMode(customer));
 
   return (
     <>
