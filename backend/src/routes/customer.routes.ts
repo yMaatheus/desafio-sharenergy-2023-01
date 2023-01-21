@@ -11,6 +11,12 @@ const customerController = new CustomerController(customerService);
 const route = Router();
 
 route.route('/')
+  .post(auth, customerController.create)
   .get(auth, customerController.getAll);
+
+route.route('/:id')
+  .get(auth, customerController.getById)
+  .put(auth, customerController.updateById)
+  .delete(auth, customerController.deleteById);
 
 export default route;

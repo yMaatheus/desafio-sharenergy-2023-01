@@ -14,6 +14,8 @@ export enum ErrorTypes {
   TokenNotFound = 'TokenNotFound',
   AllFieldsMustBeFilled = 'AllFieldsMustBeFilled',
   InvalidId = 'InvalidId',
+  FieldWithInvalidFormat = 'FieldWithInvalidFormat',
+  ObjectAlreadyExistsDatabase = 'ObjectAlreadyExistsDatabase',
 }
 
 export const errorCatalog: ErrorCatalog = {
@@ -39,6 +41,14 @@ export const errorCatalog: ErrorCatalog = {
   },
   InvalidId: {
     error: 'id invalid',
+    httpStatus: 400,
+  },
+  FieldWithInvalidFormat: {
+    error: 'Field with invalid format',
+    httpStatus: 400,
+  },
+  ObjectAlreadyExistsDatabase: {
+    error: 'Object already exists in database',
     httpStatus: 400,
   },
 };
